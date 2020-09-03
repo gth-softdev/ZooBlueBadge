@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using ZooBlue.Data;
 using ZooBlueBadgeAPI.Models;
 
 namespace ZooBlueBadgeAPI

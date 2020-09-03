@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using ZooBlueBadgeAPI.Providers;
 using ZooBlueBadgeAPI.Models;
+using ZooBlue.Data;
 
 namespace ZooBlueBadgeAPI
 {
