@@ -20,16 +20,12 @@ namespace ZooBlue.Data
         public bool HasAquaticExhibit { get; set; }
         [Required]
         public bool HasGarden { get; set; }
-        [Required]
-        public bool AzaAccredited { get; set; }
+
         public List<string> SeasonalAttractions { get; set; }
 
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
-
-
-
 
     }
 }
