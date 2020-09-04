@@ -33,6 +33,9 @@ namespace ZooBlue.Data
             return new ApplicationDbContext();
         }
         public DbSet<Zoo> Zoos { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Attraction> Attractions { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
