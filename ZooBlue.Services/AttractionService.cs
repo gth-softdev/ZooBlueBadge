@@ -107,7 +107,7 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                         .Attractions
-                        .SingleOrDefault(e => e.AttId == AttId && e.ZooId == _ZooId;
+                        .SingleOrDefault(e => e.AttId == AttId && e.ZooId == _ZooId);
 
                 ctx.Attractions.Remove(entity);
 
