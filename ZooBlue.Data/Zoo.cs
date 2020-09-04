@@ -21,7 +21,7 @@ namespace ZooBlue.Data
         public double Admission { get; set; }
         public Review AverageRating { get; }
         public List<Attraction> Attractions { get; }
-        public List<Review> Reviews { get; }
+        public List<Review> Reviews { get; } 
 
     }
 }
