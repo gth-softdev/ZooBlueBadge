@@ -7,27 +7,18 @@ using System.Threading.Tasks;
 
 namespace ZooBlue.Models.AttractionModels
 {
-    class AttractionListItems
+    class AttractionEdit
     {
-        [Display(Name = "Attraction Id")]
+        [Required]
         public int AttId { get; set; }
-
+        [Required]
         [Display(Name = "Zoo")]
-        public int ZooId { get; }
+        public int ZooId { get; set; }
 
-        [Display(Name = "Animals")]
         public List<string> Animals { get; set; }
-        [Display(Name = "Experinces")]
         public List<string> Experiences { get; set; }
-
-        [Display(Name = "Aquarium")]
-        public bool HasAquaticExhibit {get; set;}
-
-        [Display(Name = "Garden")]
+        public bool HasAquaticExhibit { get; set; }
         public bool HasGarden { get; set; }
-
-        [Display(Name = "Seasonal Attractions")]
-        public List<string> SeasonalAttractions { get; set; }
-       
+        public List<string> SeasonalAttractions {get; set;}
     }
 }

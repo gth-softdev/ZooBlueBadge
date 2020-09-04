@@ -24,8 +24,7 @@ namespace ZooBlue.Data
         public List<string> SeasonalAttractions { get; set; }
 
         [ForeignKey(nameof(Zoo))]
-        public int ZooId { get; set; }
+        public int ZooId { get;}
         public virtual Zoo Zoo { get; set; }
-
     }
 }
