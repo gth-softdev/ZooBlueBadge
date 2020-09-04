@@ -11,16 +11,18 @@ namespace ZooBlue.Data
     {
         [Key]
         public int ZooId { get; set; }
+
+        [Required]
         public string ZooName { get; set; }
+        [Required]
         public string Location { get; set; }
-        public int ZooSize { get; set; }
+        public double ZooSize { get; set; }
         public bool AZAAccredited { get; set; }
-        public double AdmissionCost { get; set; }
-        public double AvgRating { get; set; }
-
-        public List<string> Attractions { get; set; }
-        public List<int> Reviews { get; set; }
-
+        [Required]
+        public double Admission { get; set; }
+        public Review AverageRating { get; }
+        public List<Attraction> Attractions { get; }
+        public List<Review> Reviews { get; } 
 
     }
 }
