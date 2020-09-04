@@ -11,6 +11,7 @@ namespace ZooBlue.Data
     {
         [Key]
         public int ZooId { get; set; }
+
         [Required]
         public string ZooName { get; set; }
         [Required]
