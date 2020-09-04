@@ -8,5 +8,6 @@ namespace ZooBlue.Models
 {
     class AttractionCreate
     {
+
     }
 }
