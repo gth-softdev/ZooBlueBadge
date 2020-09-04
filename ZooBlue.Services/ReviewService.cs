@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBlue.Models.AttractionModels
+namespace ZooBlue.Services
 {
-    public class AttractionListItems
+    public class ReviewService
+
     {
-        
+
     }
 }

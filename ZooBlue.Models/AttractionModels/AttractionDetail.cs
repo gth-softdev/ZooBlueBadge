@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooBlue.Models
 {
-    class AttractionDetail
+    public class AttractionDetail
     {
     }
 }
