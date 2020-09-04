@@ -11,7 +11,7 @@ namespace ZooBlue.Data
    public class Attraction
     {
         [Key]
-        public int AttID { get; set; }
+        public int AttId { get; set; }
         [Required]
         public List<string> Animals { get; set; }
         [Required]
@@ -24,7 +24,7 @@ namespace ZooBlue.Data
         public List<string> SeasonalAttractions { get; set; }
 
         [ForeignKey(nameof(Zoo))]
-        public int ZooId { get;}
+        public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
     }
 }

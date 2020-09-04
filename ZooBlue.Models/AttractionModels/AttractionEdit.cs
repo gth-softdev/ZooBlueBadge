@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZooBlue.Models.AttractionModels
 {
-    class AttractionEdit
+    public class AttractionEdit
     {
         [Required]
         public int AttId { get; set; }

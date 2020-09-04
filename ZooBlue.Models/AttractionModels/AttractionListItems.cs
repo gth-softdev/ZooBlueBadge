@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ZooBlue.Models.AttractionModels
 {
-    class AttractionListItems
+    public class AttractionListItems
     {
         [Display(Name = "Attraction Id")]
         public int AttId { get; set; }
 
         [Display(Name = "Zoo")]
-        public int ZooId { get; }
+        public int ZooId { get; set; }
 
         [Display(Name = "Animals")]
         public List<string> Animals { get; set; }

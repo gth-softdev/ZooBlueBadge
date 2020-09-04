@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZooBlue.Models
 {
-    class AttractionCreate
+   public class AttractionCreate
     {
         [Required]
         [Display(Name = "Zoo")]
