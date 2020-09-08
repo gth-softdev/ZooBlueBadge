@@ -56,10 +56,21 @@
   <ItemGroup>
     <Compile Include="AttractionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZooBlue.Data\ZooBlue.Data.csproj">
+      <Project>{0AE3CD05-1C48-480A-93C2-97923A967362}</Project>
+      <Name>ZooBlue.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZooBlue.Models\ZooBlue.Models.csproj">
+      <Project>{A1CE38AA-0349-49F3-ADEE-47169AC07987}</Project>
+      <Name>ZooBlue.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
