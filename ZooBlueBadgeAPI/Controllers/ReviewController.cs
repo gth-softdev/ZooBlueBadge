@@ -5,7 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ZooBlue.Data;
 using ZooBlue.Models;
+using ZooBlue.Models.ReviewModels;
 using ZooBlue.Services;
 
 namespace ZooBlueBadgeAPI.Controllers
@@ -42,6 +44,29 @@ namespace ZooBlueBadgeAPI.Controllers
             ReviewService postService = CreateReviewService();
             var note = postService.GetReviewById(id);
             return Ok(note);
+        }
+
+        public IHttpActionResult Put(ReviewEdit review)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateReviewService();
+
+            if (!service.ReviewEdit(review))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateReviewService();
+
+            if (!service.DeleteReview(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }
