@@ -9,14 +9,25 @@ namespace ZooBlue.Models
 {
     public class AttractionDetail
     {
+        [Display(Name = "Attraction Id")]
+        public int AttId { get; set; }
+
+        [Display(Name = "Zoo Id")]
+        public int ZooId { get; set; }
+
         [Display(Name = "Zoo")]
         public string ZooName { get; set; }
-        public int ZooId {get; set;}
-        public int Attid { get; set; }
         public List<string> Animals { get; set; }
         public List<string> Experiences { get; set; }
-        public bool HassAquaticExhibit { get; set; }
+
+        [Display(Name = "Aquarium")]
+        public bool HasAquaticExhibit { get; set; }
+
+        [Display(Name = "Garden")]
         public bool HasGarden { get; set; }
+
+        [Display(Name = "Seasonal Attractions")]
         public List<string> SeasonalAttractions { get; set; }
+
     }
 }

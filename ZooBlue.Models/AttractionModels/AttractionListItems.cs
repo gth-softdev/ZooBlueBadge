@@ -15,9 +15,7 @@ namespace ZooBlue.Models.AttractionModels
         [Display(Name = "Zoo")]
         public int ZooId { get; set; }
 
-        [Display(Name = "Animals")]
         public List<string> Animals { get; set; }
-        [Display(Name = "Experinces")]
         public List<string> Experiences { get; set; }
 
         [Display(Name = "Aquarium")]
