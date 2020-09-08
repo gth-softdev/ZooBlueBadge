@@ -12,9 +12,11 @@ namespace ZooBlue.Services
     public class AttractionService
     {
         private readonly int _zooId;
+ 
         public AttractionService(int zooId)
         {
             _zooId = zooId;
+
         }
 
         public IEnumerable<AttractionListItems> GetAttractions()
