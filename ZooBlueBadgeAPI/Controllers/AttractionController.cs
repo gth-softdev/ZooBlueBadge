@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using ZooBlue.Data;
+using ZooBlue.Models;
+using ZooBlue.Models.AttractionModels;
 using ZooBlue.Services;
 
 namespace ZooBlueBadgeAPI.Controllers
@@ -12,18 +15,59 @@ namespace ZooBlueBadgeAPI.Controllers
     [RoutePrefix("api/Attraction")]
     public class AttractionController : ApiController
     {
-        private IHttpActionResult CreateAttractionService()
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private AttractionService CreateAttractionService()
         {
-            var zooId = int.Parse(Zoo.Identity.GetZooId());
-            var attractionService = new AttractionService(zooId);
+            var userId = int.Parse(User.Identity.GetUserId()); // Don't think this works
+            var attractionService = new AttractionService(userId);
             return attractionService;
         }
 
-        private AttractionService GetAttraction(int id)
+        public IHttpActionResult Post(AttractionCreate attraction)
         {
-            AttractionService attractionService = CreateAttractionService();
-            var attractions = attractionService.GetAttractionByZoo(id);
-            return Ok(attractions);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateAttractionService();
+
+            if (!service.CreateAttraction(attraction))
+                return InternalServerError();
+
+            return Ok();
         }
+
+        public IHttpActionResult Get(int id)
+        {
+            AttractionService attService = CreateAttractionService();
+            var note = attService.GetAttractionByZoo(id);
+            return Ok(note);
+        }
+
+        public IHttpActionResult Put (AttractionEdit attraction)
+        {
+            if (attraction == null)
+                return BadRequest("Received model was null.");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateAttractionService();
+
+            if (!service.UpdateAttraction(attraction))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateAttractionService();
+
+            if (!service.DeleteAttraction(id))
+                return InternalServerError();
+
+            return Ok();
+        }
+
     }
 }

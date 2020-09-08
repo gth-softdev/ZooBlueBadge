@@ -54,8 +54,13 @@ namespace ZooBlue.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Attractions.Add(entity);
-                return ctx.SaveChanges() == 0;
+                return ctx.SaveChanges() == 1;
             }
+        }
+
+        public bool UpdateAttraction(AttractionEdit attraction)
+        {
+            throw new NotImplementedException();
         }
 
         public AttractionDetail GetAttractionByZoo(int id)
@@ -66,15 +71,15 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                     .Attractions
-                    .SingleOrDefault(e => e.AttId == id && e.ZooId == _zooId);
+                    .SingleOrDefault(e => e.ZooId == id && e.ZooId == _zooId);
 
                 return
                     new AttractionDetail
                     {
-                        Attid = entity.AttId,
+                        AttId = entity.AttId,
                         Animals = entity.Animals,
                         Experiences = entity.Experiences,
-                        HassAquaticExhibit = entity.HasAquaticExhibit,
+                        HasAquaticExhibit = entity.HasAquaticExhibit,
                         HasGarden = entity.HasGarden,
                         SeasonalAttractions = entity.SeasonalAttractions,
                         ZooId = entity.ZooId,
@@ -97,7 +102,7 @@ namespace ZooBlue.Services
                 entity.HasAquaticExhibit = model.HasAquaticExhibit;
                 entity.HasGarden = model.HasGarden;
                 entity.SeasonalAttractions = model.SeasonalAttractions;
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 2;
             }
         }
         public bool DeleteAttraction(int AttId)
