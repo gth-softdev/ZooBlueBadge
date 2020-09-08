@@ -5,29 +5,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZooBlue.Data;
 
-namespace ZooBlue.Data
+namespace ZooBlue.Models
 {
-    public class Review
+    public class ReviewCreate
     {
-        [Key]
         public int ReviewId { get; set; }
         public int Rating { get; set; }
+        
+        [Required]
         public string ReviewText { get; set; }
-        public DateTime VisitDate { get; set; }
 
-        // get from user table?   public string FullName { get; set; }
+        [Required]
+        public DateTime VisitDate { get; set; }
 
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
-        public Guid Author { get; set; }
+        //public ApplicationUser Author { get; set; }
 
 
         public bool IsRecommended { get; set; }
-
-        // userid from app user? public int MyProperty { get; set; }
-
-
     }
 }
