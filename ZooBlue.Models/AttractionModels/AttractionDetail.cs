@@ -17,7 +17,6 @@ namespace ZooBlue.Models
         public List<string> Experiences { get; set; }
         public bool HassAquaticExhibit { get; set; }
         public bool HasGarden { get; set; }
-
         public List<string> SeasonalAttractions { get; set; }
     }
 }
