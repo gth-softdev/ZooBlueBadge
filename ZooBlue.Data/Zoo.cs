@@ -41,7 +41,7 @@ namespace ZooBlue.Data
         }
         public virtual List<Review> Reviews { get; set; } = new List<Review>();
         public List<Attraction> Attractions { get; }
-        public List<Review> AllZooReviews { get; set; }
+        public List<Review> AllZooReviews { get; }
 
     }
 }

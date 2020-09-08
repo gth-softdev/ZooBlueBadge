@@ -57,6 +57,7 @@
     <Compile Include="AttractionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewService.cs" />
+    <Compile Include="ZooServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
