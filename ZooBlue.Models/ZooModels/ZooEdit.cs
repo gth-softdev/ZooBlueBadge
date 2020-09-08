@@ -25,5 +25,8 @@ namespace ZooBlue.Models.ZooModels
         public double ZooSize { get; set; }
          
         public bool AZAAccredited { get; set; }
+
+        [Required]
+        public double Admission { get; set; }
     }
 }
