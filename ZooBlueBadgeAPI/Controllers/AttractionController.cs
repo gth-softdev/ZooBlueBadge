@@ -15,10 +15,10 @@ namespace ZooBlueBadgeAPI.Controllers
     [RoutePrefix("api/Attraction")]
     public class AttractionController : ApiController
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
         private AttractionService CreateAttractionService()
         {
-            var userId = int.Parse(User.Identity.GetUserId()); // Don't think this works
+            var userId = int.Parse(User.Identity.GetUserId()); // Don't think this works Need to connect to ZooId?????
             var attractionService = new AttractionService(userId);
             return attractionService;
         }
