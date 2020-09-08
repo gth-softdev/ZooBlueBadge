@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZooBlue.Data;
 using ZooBlue.Models;
+using ZooBlue.Models.ReviewModels;
 
 namespace ZooBlue.Services
 {
@@ -75,6 +76,37 @@ namespace ZooBlue.Services
                         //CreatedUtc = entity.CreatedUtc,
                         //ModifiedUtc = entity.ModifiedUtc
                     };
+            }
+        }
+        public bool ReviewEdit(ReviewEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Reviews
+                        .Single(e => e.ReviewId == model.ReviewId);
+
+                entity.ReviewText = model.ReviewText;
+                entity.IsRecommended = model.IsRecommended;
+                entity.Rating = model.Rating;
+                //entity.Content = model.Content;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteReview(int reviewId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Reviews
+                        .Single(e => e.ReviewId == reviewId);
+
+                ctx.Reviews.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
