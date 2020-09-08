@@ -1,28 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBlue.Data
+namespace ZooBlue.Models.ZooModels
 {
-    public class Zoo
+    public class ZooListItems
     {
-        [Key]
         public int ZooId { get; set; }
-
-        [Required]
         public string ZooName { get; set; }
-
-        [Required]
         public string Location { get; set; }
-
         public double ZooSize { get; set; }
-
         public bool AZAAccredited { get; set; }
-
-        [Required]
         public double Admission { get; set; }
 
         public double AverageRating
@@ -40,8 +30,7 @@ namespace ZooBlue.Data
             }
         }
         public virtual List<Review> Reviews { get; set; } = new List<Review>();
-        public List<Attraction> Attractions { get; }
+        public List<Attraction> Attractions { get; set; }
         public List<Review> AllZooReviews { get; set; }
-
     }
 }
