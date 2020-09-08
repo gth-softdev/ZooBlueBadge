@@ -11,10 +11,10 @@ namespace ZooBlue.Services
 {
     public class AttractionService
     {
-        private readonly int _ZooId;
+        private readonly int _zooId;
         public AttractionService(int zooId)
         {
-            _ZooId = zooId;
+            _zooId = zooId;
         }
 
         public IEnumerable<AttractionListItems> GetAttractions()
@@ -24,7 +24,7 @@ namespace ZooBlue.Services
                 var attQuery =
                     ctx
                     .Attractions
-                    .Where(e => e.ZooId == _ZooId)
+                    .Where(e => e.ZooId == _zooId)
                     .Select(
                     e => new AttractionListItems
                     {
@@ -44,7 +44,7 @@ namespace ZooBlue.Services
             var entity =
                 new Attraction
                 {
-                    ZooId = _ZooId,
+                    ZooId = _zooId,
                     Animals = model.Animals,
                     Experiences = model.Experiences,
                     HasAquaticExhibit = model.HasAquaticExhibit,
@@ -66,7 +66,7 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                     .Attractions
-                    .SingleOrDefault(e => e.AttId == id && e.ZooId == _ZooId);
+                    .SingleOrDefault(e => e.AttId == id && e.ZooId == _zooId);
 
                 return
                     new AttractionDetail
@@ -89,7 +89,7 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                         .Attractions
-                        .SingleOrDefault(e => e.AttId == model.AttId && e.ZooId == _ZooId);
+                        .SingleOrDefault(e => e.AttId == model.AttId && e.ZooId == _zooId);
 
                 entity.ZooId = model.ZooId;
                 entity.Animals = model.Animals;
@@ -107,7 +107,7 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                         .Attractions
-                        .SingleOrDefault(e => e.AttId == AttId && e.ZooId == _ZooId);
+                        .SingleOrDefault(e => e.AttId == AttId && e.ZooId == _zooId);
 
                 ctx.Attractions.Remove(entity);
 
