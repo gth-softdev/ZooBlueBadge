@@ -21,7 +21,8 @@ namespace ZooBlue.Data
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
-        
+        public Guid Author { get; set; }
+
 
         public bool IsRecommended { get; set; }
 
