@@ -43,6 +43,40 @@ namespace ZooBlueBadgeAPI.Controllers
             return Ok(zoos);
         }
 
+        //Read/Get zoo by ID
+        public IHttpActionResult GetById(int id)
+        {
+            ZooServices zooService = CreateZooService();
+            var zoo = zooService.GetZooById(id);
+            return Ok(zoo);
+        }
+
        //Update/Edit method 
+       public IHttpActionResult Put(ZooEdit zooToEdit)
+       {
+            if (zooToEdit == null)
+                return BadRequest("Recieved model was null.");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateZooService();
+
+            if (!service.UpdateZoo(zooToEdit))
+                return InternalServerError();
+
+            return Ok();
+       }
+
+        //Delete method
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateZooService();
+
+            if (!service.DeleteZoo(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
