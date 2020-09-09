@@ -40,8 +40,9 @@ namespace ZooBlue.Data
             }
         }
         public virtual List<Review> Reviews { get; set; } = new List<Review>();
-        public List<Attraction> Attractions { get; }
-        public List<Review> AllZooReviews { get; }
+        public ICollection<Attraction> Attractions { get; }
+        public ICollection<Review> AllZooReviews { get; }
+        //ICollection
 
     }
 }

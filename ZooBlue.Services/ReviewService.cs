@@ -34,7 +34,7 @@ namespace ZooBlue.Services
             {
                 //entity.Author = ctx.Users.Where(e => e.Id == _userId).First();
                 ctx.Reviews.Add(entity);
-                return ctx.SaveChanges() == 0;
+                return ctx.SaveChanges() == 1;
             }
         }
         public IEnumerable<ReviewListItem> GetReviews()
@@ -44,14 +44,14 @@ namespace ZooBlue.Services
                 var query =
                     ctx
                         .Reviews
-                        .Where(e => e.Author == _userId)
+                        //.Where(e => e.Author == _userId)
                         .Select(
                             e =>
                                 new ReviewListItem
                                 {
                                     ReviewId = e.ReviewId,
                                     ReviewText = e.ReviewText,
-
+                                    VisitDate = e.VisitDate
                                 }
                         );
                 return query.ToArray();
