@@ -15,10 +15,10 @@ namespace ZooBlue.Models.AttractionModels
         [Display(Name = "Zoo")]
         public int ZooId { get; set; }
 
-        public List<string> Animals { get; set; }
-        public List<string> Experiences { get; set; }
+        public string Animals { get; set; }
+        public string Experiences { get; set; }
         public bool HasAquaticExhibit { get; set; }
         public bool HasGarden { get; set; }
-        public List<string> SeasonalAttractions {get; set;}
+        public string SeasonalAttractions {get; set;}
     }
 }

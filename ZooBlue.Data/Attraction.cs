@@ -13,15 +13,15 @@ namespace ZooBlue.Data
         [Key]
         public int AttId { get; set; }
         [Required]
-        public List<string> Animals { get; set; }
+        public string Animals { get; set; }
         [Required]
-        public List<string> Experiences { get; set; }
+        public string Experiences { get; set; }
         [Required]
         public bool HasAquaticExhibit { get; set; }
         [Required]
         public bool HasGarden { get; set; }
 
-        public List<string> SeasonalAttractions { get; set; }
+        public string SeasonalAttractions { get; set; }
 
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }

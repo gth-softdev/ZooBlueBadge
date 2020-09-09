@@ -90,6 +90,14 @@
     <Compile Include="Migrations\202009091443533_InitialMigration.Designer.cs">
       <DependentUpon>202009091443533_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009092035043_AttractionMigration.cs" />
+    <Compile Include="Migrations\202009092035043_AttractionMigration.Designer.cs">
+      <DependentUpon>202009092035043_AttractionMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009092041261_AttractionMigrationFix.cs" />
+    <Compile Include="Migrations\202009092041261_AttractionMigrationFix.Designer.cs">
+      <DependentUpon>202009092041261_AttractionMigrationFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Review.cs" />
@@ -102,6 +110,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009091443533_InitialMigration.resx">
       <DependentUpon>202009091443533_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009092035043_AttractionMigration.resx">
+      <DependentUpon>202009092035043_AttractionMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009092041261_AttractionMigrationFix.resx">
+      <DependentUpon>202009092041261_AttractionMigrationFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
