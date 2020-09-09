@@ -18,8 +18,8 @@ namespace ZooBlueBadgeAPI.Controllers
 
         private AttractionService CreateAttractionService()
         {
-            var zooId = int.Parse(User.Identity.GetUserId()); // Don't think this works Need to connect to ZooId?????
-            var attractionService = new AttractionService(zooId);
+            var userId = int.Parse(User.Identity.GetUserId()); // Don't think this works the way I want it to... Need to connect to ZooId?????
+            var attractionService = new AttractionService(userId);
             return attractionService;
         }
 
