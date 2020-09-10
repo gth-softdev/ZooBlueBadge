@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZooBlue.Data;
+using ZooBlue.Models;
+using ZooBlue.Models.AttractionModels;
 using ZooBlue.Models.ZooModels;
 
 namespace ZooBlue.Services
@@ -42,10 +44,41 @@ namespace ZooBlue.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                AttractionDetail attractionDetail = GetAttractionById(int ZooId)
+                {
+                    if (attractionDetail.ZooId == ZooId)
+                        return List<attractionDetail>; 
+                }
+                //IEnumerable<AttractionDetail> GetAttractionById(int id)
+                //{
+                //    using (var ctx = new ApplicationDbContext())
+                //    {
+                //        var entity =
+                //            ctx
+                //            .Attractions
+                //            .Where(e => e.AttId == id) 
+                //            .Select(e =>
+
+                //            new AttractionDetail
+                //            {
+                //                AttId = e.AttId,
+                //                Animals = e.Animals,
+                //                Experiences = e.Experiences,
+                //                HasAquaticExhibit = e.HasAquaticExhibit,
+                //                HasGarden = e.HasGarden,
+                //                SeasonalAttractions = e.SeasonalAttractions,
+                //                ZooId = e.ZooId
+                //            });
+
+                //        return entity.ToArray();
+                //    }
+                //}
+
                 var zooQuery =
                     ctx
                         .Zoos.ToList()
                         .Select(
+
                         e => new ZooListItems
                         {
                             ZooId = e.ZooId,
@@ -55,7 +88,7 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
-                            Attractions = e.Attractions.ToList(),
+                            Attractions = attractionDetail,
                             AllZooReviews = e.AllZooReviews.ToList()
                         });
                 return zooQuery.ToArray();
