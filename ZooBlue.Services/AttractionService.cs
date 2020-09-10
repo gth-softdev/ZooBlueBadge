@@ -15,6 +15,7 @@ namespace ZooBlue.Services
         private readonly Guid _userId;
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
+        public AttractionService() { }
         public AttractionService(Guid userId)
         {
             _userId = userId;
@@ -36,7 +37,7 @@ namespace ZooBlue.Services
             ).ToList();
             return attractionList;
         }
-        //public IEnumerable<AttractionListItems> GetAttractions()
+        //public IEnumerable<AttractionListItems> GetAttractionById(id)
         //{
         //    using (var ctx = new ApplicationDbContext())
         //    {
@@ -53,7 +54,7 @@ namespace ZooBlue.Services
         //                HasGarden = e.HasGarden,
         //                SeasonalAttractions = e.SeasonalAttractions
         //            });
-        //        return attQuery.ToArray();
+        //        return attQuery;
         //    }
         //}
 
@@ -75,32 +76,26 @@ namespace ZooBlue.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        public IEnumerable<AttractionDetail> GetAttractionById(int id)
+        public AttractionDetail GetAttractionById(int id)
         {
-            using (var ctx = new ApplicationDbContext())
+            var entity = _context.Attractions.Find(id);
+            if (entity == null)
+                return null;
+            var detail = new AttractionDetail
             {
-                var entity =
-                    ctx
-                    .Attractions
-                    .Where(e => e.AttId == id)// Throws exception 
-                    .Select(e =>
-
-                    new AttractionDetail
-                    {
-                        AttId = e.AttId,
-                        Animals = e.Animals,
-                        Experiences = e.Experiences,
-                        HasAquaticExhibit = e.HasAquaticExhibit,
-                        HasGarden = e.HasGarden,
-                        SeasonalAttractions = e.SeasonalAttractions,
-                        ZooId = e.ZooId,
-                        ZooName = e.Zoo.ZooName
-                    });
-
-                return entity.ToArray();
-            }
+                AttId = entity.AttId,
+                Animals = entity.Animals,
+                Experiences = entity.Experiences,
+                HasAquaticExhibit = entity.HasAquaticExhibit,
+                HasGarden = entity.HasGarden,
+                SeasonalAttractions = entity.SeasonalAttractions,
+                ZooId = entity.ZooId,
+                ZooName = entity.Zoo.ZooName
+            };
+            return detail;
         }
+
+
         public bool UpdateAttraction(AttractionEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -133,6 +128,6 @@ namespace ZooBlue.Services
             }
         }
 
-
     }
 }
+
