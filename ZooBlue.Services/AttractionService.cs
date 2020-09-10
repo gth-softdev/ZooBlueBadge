@@ -11,7 +11,7 @@ namespace ZooBlue.Services
 {
     public class AttractionService
     {
-        private readonly int _zooId;
+        //private readonly int _zooId;
         private readonly Guid _userId;
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
