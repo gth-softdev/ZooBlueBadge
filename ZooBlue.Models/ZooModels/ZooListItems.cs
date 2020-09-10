@@ -16,7 +16,12 @@ namespace ZooBlue.Models.ZooModels
         public bool AZAAccredited { get; set; }
         public double Admission { get; set; }
         public double AverageRating { get; set; }
+<<<<<<< HEAD
         public List<Attraction> Attractions { get; set; }
         public List<Review> AllZooReviews { get; set; }
+=======
+        public AttractionDetail AttractionDetails { get; set; }
+        public List<ReviewDetail> AllZooReviews { get; set; } //Needs to call model at somepoint
+>>>>>>> ff656b8d8c5cc24567ebc38b20fe7f136e19cd22
     }
 }

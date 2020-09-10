@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,34 +45,21 @@ namespace ZooBlue.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+<<<<<<< HEAD
                 //AttractionDetail attractionDetail = GetAttractionById(int ZooId)
                 //{
                 //    if (attractionDetail.ZooId == ZooId)
                 //        return List<attractionDetail>;
                 //}
                 //IEnumerable<AttractionDetail> GetAttractionById(int id)
+=======
+                AttractionDetail attractionDetail = new AttractionDetail();
+
+                //GetAttractionById();
+>>>>>>> ff656b8d8c5cc24567ebc38b20fe7f136e19cd22
                 //{
-                //    using (var ctx = new ApplicationDbContext())
-                //    {
-                //        var entity =
-                //            ctx
-                //            .Attractions
-                //            .Where(e => e.AttId == id) 
-                //            .Select(e =>
-
-                //            new AttractionDetail
-                //            {
-                //                AttId = e.AttId,
-                //                Animals = e.Animals,
-                //                Experiences = e.Experiences,
-                //                HasAquaticExhibit = e.HasAquaticExhibit,
-                //                HasGarden = e.HasGarden,
-                //                SeasonalAttractions = e.SeasonalAttractions,
-                //                ZooId = e.ZooId
-                //            });
-
-                //        return entity.ToArray();
-                //    }
+                //    if (attractionDetail.ZooId == ZooListItems.ZooId)
+                //        return attractionDetail; 
                 //}
 
                 var zooQuery =
@@ -88,25 +76,33 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
+<<<<<<< HEAD
                             Attractions = e.Attractions.ToList(),
+=======
+                            //AttractionsDetails = attractionDetail.AttId,
+>>>>>>> ff656b8d8c5cc24567ebc38b20fe7f136e19cd22
                             AllZooReviews = e.AllZooReviews.ToList()
                         });
                 return zooQuery.ToArray();
             }
-        } 
+        }
 
         // GET BY ID - READ
         public ZooListItems GetZooById(int id)
         {
+            AttractionService attractionService = new AttractionService();
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Zoos
                         .SingleOrDefault(e => e.ZooId == id);
+                foreach (Attraction attraction in entity.Attractions)
+                {
+                    AttractionDetail attractionDetail = attractionService.GetAttractionById(attraction.AttId);
 
-                return
-                    new ZooListItems
+
+                    var detail = new ZooListItems
                     {
                         ZooName = entity.ZooName,
                         Location = entity.Location,
@@ -114,9 +110,12 @@ namespace ZooBlue.Services
                         AZAAccredited = entity.AZAAccredited,
                         Admission = entity.Admission,
                         AverageRating = entity.AverageRating,
-                        Attractions = entity.Attractions.ToList(),
+                        AttractionDetails = attractionDetail,
                         AllZooReviews = entity.AllZooReviews.ToList()
                     };
+                     return detail;
+                }
+                return null;
             }
         }
 
