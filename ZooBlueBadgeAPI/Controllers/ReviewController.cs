@@ -56,7 +56,7 @@ namespace ZooBlueBadgeAPI.Controllers
             if (!service.ReviewEdit(review))
                 return InternalServerError();
 
-            return Ok();
+            return Ok(review);
         }
 
         public IHttpActionResult Delete(int id)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using ZooBlue.Data;
@@ -57,25 +58,31 @@ namespace ZooBlue.Services
                 return query.ToArray();
             }
         }
-        public Review GetReviewById(int id)
+        public IEnumerable<Review> GetReviewById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Reviews
-                        .Single(e => e.ReviewId == id);
-                return
+                        .Reviews.ToList()
+                        .Where(e => e.ZooId == id)
+                        //.Single(e => e.ZooId == id);
+                        .Select(
+                            e =>
+
                     new Review
                     {
-                        ReviewId = entity.ReviewId,
-                        Rating = entity.Rating,
-                        ReviewText = entity.ReviewText,
-                        VisitDate = entity.VisitDate,
-                        ZooId = entity.ZooId,
+                        ReviewId = e.ReviewId,
+                        Rating = e.Rating,
+                        ReviewText = e.ReviewText,
+                        VisitDate = e.VisitDate,
+                        //ZooId = entity.ZooId,
                         //CreatedUtc = entity.CreatedUtc,
                         //ModifiedUtc = entity.ModifiedUtc
-                    };
+                    }
+                    );
+
+                return entity;
             }
         }
         public bool ReviewEdit(ReviewEdit model)
@@ -87,12 +94,26 @@ namespace ZooBlue.Services
                         .Reviews
                         .Single(e => e.ReviewId == model.ReviewId);
 
-                entity.ReviewText = model.ReviewText;
-                entity.IsRecommended = model.IsRecommended;
-                entity.Rating = model.Rating;
+                if (model.ReviewText != null && model.ReviewText != entity.ReviewText)
+                {
+                    entity.ReviewText = model.ReviewText;
+                }
+                if (model.Rating != entity.Rating)
+                {
+                    entity.Rating = model.Rating;
+                }
+                if (model.IsRecommended != entity.IsRecommended)
+                {
+                    entity.IsRecommended = model.IsRecommended;
+                }
                 //entity.Content = model.Content;
 
-                return ctx.SaveChanges() == 1;
+                if (ctx.ChangeTracker.HasChanges())
+                {
+                    return ctx.SaveChanges() == 1;
+
+                }
+                return true;
             }
         }
         public bool DeleteReview(int reviewId)

@@ -18,11 +18,11 @@ namespace ZooBlueBadgeAPI.Controllers
 
         private AttractionService CreateAttractionService()
         {
-            var userId = int.Parse(User.Identity.GetUserId()); // Don't think this works the way I want it to... Need to connect to ZooId?????
+            var userId = Guid.Parse(User.Identity.GetUserId()); 
             var attractionService = new AttractionService(userId);
             return attractionService;
         }
-
+        [HttpPost]
         public IHttpActionResult Post(AttractionCreate attraction)
         {
             if (!ModelState.IsValid)
@@ -36,13 +36,21 @@ namespace ZooBlueBadgeAPI.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            AttractionService attService = CreateAttractionService();
+            var note = attService.GetAttractions();
+            return Ok(note);
+        }
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             AttractionService attService = CreateAttractionService();
-            var note = attService.GetAttractionByZoo(id);
+            var note = attService.GetAttractionById(id);
             return Ok(note);
         }
-
+        [HttpPut]
         public IHttpActionResult Put (AttractionEdit attraction)
         {
             if (attraction == null)
@@ -58,7 +66,7 @@ namespace ZooBlueBadgeAPI.Controllers
 
             return Ok();
         }
-
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateAttractionService();

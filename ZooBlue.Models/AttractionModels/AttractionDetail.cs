@@ -17,8 +17,8 @@ namespace ZooBlue.Models
 
         [Display(Name = "Zoo")]
         public string ZooName { get; set; }
-        public List<string> Animals { get; set; }
-        public List<string> Experiences { get; set; }
+        public string Animals { get; set; }
+        public string Experiences { get; set; }
 
         [Display(Name = "Aquarium")]
         public bool HasAquaticExhibit { get; set; }
@@ -27,7 +27,7 @@ namespace ZooBlue.Models
         public bool HasGarden { get; set; }
 
         [Display(Name = "Seasonal Attractions")]
-        public List<string> SeasonalAttractions { get; set; }
+        public string SeasonalAttractions { get; set; }
 
     }
 }
