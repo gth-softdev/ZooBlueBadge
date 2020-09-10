@@ -31,18 +31,18 @@ namespace ZooBlue.Data
             {
                 double totalAverageRating = 0;
 
-                foreach (var rating in Reviews)
+                foreach (var rating in AllZooReviews)
                 {
                     totalAverageRating += rating.Rating;
                 }
 
-                return (Reviews.Count > 0) ? totalAverageRating / Reviews.Count : 0;
+                return (AllZooReviews.Count > 0) ? totalAverageRating / AllZooReviews.Count : 0;
             }
         }
-        public virtual List<Review> Reviews { get; set; } = new List<Review>();
-        public ICollection<Attraction> Attractions { get; }
-        public ICollection<Review> AllZooReviews { get; }
-        //ICollection
+        //public virtual List<Review> Reviews { get; set; } = new List<Review>();
+        public virtual ICollection<Attraction> Attractions { get; set; } = new List<Attraction>();
+        public virtual ICollection<Review> AllZooReviews { get; set; } = new List<Review>();
+        
 
     }
 }
