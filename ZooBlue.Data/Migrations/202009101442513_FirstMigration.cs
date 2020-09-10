@@ -3,7 +3,7 @@ namespace ZooBlue.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class FirstMigration : DbMigration
     {
         public override void Up()
         {
@@ -12,8 +12,11 @@ namespace ZooBlue.Data.Migrations
                 c => new
                     {
                         AttId = c.Int(nullable: false, identity: true),
+                        Animals = c.String(nullable: false),
+                        Experiences = c.String(nullable: false),
                         HasAquaticExhibit = c.Boolean(nullable: false),
                         HasGarden = c.Boolean(nullable: false),
+                        SeasonalAttractions = c.String(),
                         ZooId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.AttId)
@@ -44,16 +47,10 @@ namespace ZooBlue.Data.Migrations
                         ZooId = c.Int(nullable: false),
                         Author = c.Guid(nullable: false),
                         IsRecommended = c.Boolean(nullable: false),
-                        Zoo_ZooId = c.Int(),
-                        Zoo_ZooId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.ReviewId)
                 .ForeignKey("dbo.Zoo", t => t.ZooId, cascadeDelete: true)
-                .ForeignKey("dbo.Zoo", t => t.Zoo_ZooId)
-                .ForeignKey("dbo.Zoo", t => t.Zoo_ZooId1)
-                .Index(t => t.ZooId)
-                .Index(t => t.Zoo_ZooId)
-                .Index(t => t.Zoo_ZooId1);
+                .Index(t => t.ZooId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -134,15 +131,11 @@ namespace ZooBlue.Data.Migrations
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.Attraction", "ZooId", "dbo.Zoo");
-            DropForeignKey("dbo.Review", "Zoo_ZooId1", "dbo.Zoo");
-            DropForeignKey("dbo.Review", "Zoo_ZooId", "dbo.Zoo");
             DropForeignKey("dbo.Review", "ZooId", "dbo.Zoo");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Review", new[] { "Zoo_ZooId1" });
-            DropIndex("dbo.Review", new[] { "Zoo_ZooId" });
             DropIndex("dbo.Review", new[] { "ZooId" });
             DropIndex("dbo.Attraction", new[] { "ZooId" });
             DropTable("dbo.IdentityUserLogin");
