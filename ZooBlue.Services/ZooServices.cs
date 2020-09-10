@@ -81,8 +81,8 @@ namespace ZooBlue.Services
                         AZAAccredited = entity.AZAAccredited,
                         Admission = entity.Admission,
                         AverageRating = entity.AverageRating,
-                        Attractions = entity.Attractions,
-                        AllZooReviews = entity.AllZooReviews
+                        Attractions = entity.Attractions.ToList(),
+                        AllZooReviews = entity.AllZooReviews.ToList()
                     };
             }
         }

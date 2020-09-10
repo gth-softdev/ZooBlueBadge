@@ -11,7 +11,7 @@ namespace ZooBlue.Services
 {
     public class AttractionService
     {
-        private readonly int _zooId;
+        //private readonly int _zooId;
         private readonly Guid _userId;
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
@@ -78,7 +78,6 @@ namespace ZooBlue.Services
 
         public IEnumerable<AttractionDetail> GetAttractionById(int id)
         {
-
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
