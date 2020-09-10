@@ -78,7 +78,6 @@ namespace ZooBlue.Services
 
         public IEnumerable<AttractionDetail> GetAttractionById(int id)
         {
-
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
