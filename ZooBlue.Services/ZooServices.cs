@@ -44,12 +44,13 @@ namespace ZooBlue.Services
             {
                 var zooQuery =
                     ctx
-                        .Zoos
+                        .Zoos.ToList()
                         .Select(
                         e => new ZooListItems
                         {
                             ZooId = e.ZooId,
                             ZooName = e.ZooName,
+                            ZooSize = e.ZooSize,
                             Location = e.Location,
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
@@ -62,7 +63,7 @@ namespace ZooBlue.Services
         } 
 
         // GET BY ID - READ
-        public ZooDetail GetZooById(int id)
+        public ZooListItems GetZooById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -72,13 +73,16 @@ namespace ZooBlue.Services
                         .SingleOrDefault(e => e.ZooId == id);
 
                 return
-                    new ZooDetail
+                    new ZooListItems
                     {
                         ZooName = entity.ZooName,
                         Location = entity.Location,
                         ZooSize = entity.ZooSize,
                         AZAAccredited = entity.AZAAccredited,
-                        Admission = entity.Admission
+                        Admission = entity.Admission,
+                        AverageRating = entity.AverageRating,
+                        Attractions = entity.Attractions,
+                        AllZooReviews = entity.AllZooReviews
                     };
             }
         }

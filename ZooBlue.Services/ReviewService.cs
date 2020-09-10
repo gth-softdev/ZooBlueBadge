@@ -52,8 +52,7 @@ namespace ZooBlue.Services
                                 {
                                     ReviewId = e.ReviewId,
                                     ReviewText = e.ReviewText,
-                                    VisitDate = e.VisitDate,
-
+                                    VisitDate = e.VisitDate
                                 }
                         );
                 return query.ToArray();
