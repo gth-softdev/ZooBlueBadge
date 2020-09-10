@@ -20,6 +20,7 @@ namespace ZooBlue.Models
         [Required]
         public DateTime VisitDate { get; set; }
 
+        [Required]
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }

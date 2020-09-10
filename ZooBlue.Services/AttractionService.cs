@@ -12,41 +12,57 @@ namespace ZooBlue.Services
     public class AttractionService
     {
         private readonly int _zooId;
- 
-        public AttractionService(int zooId)
+        private readonly Guid _userId;
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
+        public AttractionService(Guid userId)
         {
-            _zooId = zooId;
+            _userId = userId;
 
         }
-
-        public IEnumerable<AttractionListItems> GetAttractions()
+        public List<AttractionListItems> GetAttractions()
         {
-            using (var ctx = new ApplicationDbContext())
+
+            var attractionEntities = _context.Attractions.ToList();
+            var attractionList = attractionEntities.Select(e => new AttractionListItems
             {
-                var attQuery =
-                    ctx
-                    .Attractions
-                    .Where(e => e.ZooId == _zooId)
-                    .Select(
-                    e => new AttractionListItems
-                    {
-                        AttId = e.AttId,
-                        Animals = e.Animals,
-                        Experiences = e.Experiences,
-                        HasAquaticExhibit = e.HasAquaticExhibit,
-                        HasGarden = e.HasGarden,
-                        SeasonalAttractions = e.SeasonalAttractions
-                    }) ;
-                return attQuery.ToArray();
+                AttId = e.AttId,
+                Animals = e.Animals,
+                Experiences = e.Experiences,
+                HasAquaticExhibit = e.HasAquaticExhibit,
+                HasGarden = e.HasGarden,
+                SeasonalAttractions = e.SeasonalAttractions
             }
+            ).ToList();
+            return attractionList;
         }
+        //public IEnumerable<AttractionListItems> GetAttractions()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var attQuery =
+        //            ctx
+        //            .Attractions.ToList()
+        //            .Select(
+        //            e => new AttractionListItems
+        //            {
+        //                AttId = e.AttId,
+        //                Animals = e.Animals,
+        //                Experiences = e.Experiences,
+        //                HasAquaticExhibit = e.HasAquaticExhibit,
+        //                HasGarden = e.HasGarden,
+        //                SeasonalAttractions = e.SeasonalAttractions
+        //            });
+        //        return attQuery.ToArray();
+        //    }
+        //}
 
         public bool CreateAttraction(AttractionCreate model)
         {
             var entity =
                 new Attraction
                 {
-                    ZooId = _zooId,
+                    ZooId = model.ZooId,
                     Animals = model.Animals,
                     Experiences = model.Experiences,
                     HasAquaticExhibit = model.HasAquaticExhibit,
@@ -60,12 +76,7 @@ namespace ZooBlue.Services
             }
         }
 
-        public bool UpdateAttraction(AttractionEdit attraction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AttractionDetail GetAttractionByZoo(int id)
+        public IEnumerable<AttractionDetail> GetAttractionById(int id)
         {
 
             using (var ctx = new ApplicationDbContext())
@@ -73,38 +84,39 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                     .Attractions
-                    .SingleOrDefault(e => e.ZooId == id && e.ZooId == _zooId);
+                    .Where(e => e.AttId == id)// Throws exception 
+                    .Select(e =>
 
-                return
                     new AttractionDetail
                     {
-                        AttId = entity.AttId,
-                        Animals = entity.Animals,
-                        Experiences = entity.Experiences,
-                        HasAquaticExhibit = entity.HasAquaticExhibit,
-                        HasGarden = entity.HasGarden,
-                        SeasonalAttractions = entity.SeasonalAttractions,
-                        ZooId = entity.ZooId,
-                        ZooName = entity.Zoo.ZooName
-                    };
+                        AttId = e.AttId,
+                        Animals = e.Animals,
+                        Experiences = e.Experiences,
+                        HasAquaticExhibit = e.HasAquaticExhibit,
+                        HasGarden = e.HasGarden,
+                        SeasonalAttractions = e.SeasonalAttractions,
+                        ZooId = e.ZooId,
+                        ZooName = e.Zoo.ZooName
+                    });
+
+                return entity.ToArray();
             }
         }
-        public bool UpdateNote(AttractionEdit model)
+        public bool UpdateAttraction(AttractionEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Attractions
-                        .SingleOrDefault(e => e.AttId == model.AttId && e.ZooId == _zooId);
-
+                        .Attractions.ToList()
+                        .SingleOrDefault(e => e.AttId == model.AttId); // Just doesn't work... Don'
                 entity.ZooId = model.ZooId;
                 entity.Animals = model.Animals;
                 entity.Experiences = model.Experiences;
                 entity.HasAquaticExhibit = model.HasAquaticExhibit;
                 entity.HasGarden = model.HasGarden;
                 entity.SeasonalAttractions = model.SeasonalAttractions;
-                return ctx.SaveChanges() == 2;
+                return ctx.SaveChanges() == 1;
             }
         }
         public bool DeleteAttraction(int AttId)
@@ -114,7 +126,7 @@ namespace ZooBlue.Services
                 var entity =
                     ctx
                         .Attractions
-                        .SingleOrDefault(e => e.AttId == AttId && e.ZooId == _zooId);
+                        .SingleOrDefault(e => e.AttId == AttId);
 
                 ctx.Attractions.Remove(entity);
 
