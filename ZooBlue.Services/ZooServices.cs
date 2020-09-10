@@ -44,11 +44,11 @@ namespace ZooBlue.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                AttractionDetail attractionDetail = GetAttractionById(int ZooId)
-                {
-                    if (attractionDetail.ZooId == ZooId)
-                        return List<attractionDetail>; 
-                }
+                //AttractionDetail attractionDetail = GetAttractionById(int ZooId)
+                //{
+                //    if (attractionDetail.ZooId == ZooId)
+                //        return List<attractionDetail>;
+                //}
                 //IEnumerable<AttractionDetail> GetAttractionById(int id)
                 //{
                 //    using (var ctx = new ApplicationDbContext())
@@ -88,7 +88,7 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
-                            Attractions = attractionDetail,
+                            Attractions = e.Attractions.ToList(),
                             AllZooReviews = e.AllZooReviews.ToList()
                         });
                 return zooQuery.ToArray();
