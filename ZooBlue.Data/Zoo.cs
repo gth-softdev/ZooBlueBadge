@@ -39,10 +39,9 @@ namespace ZooBlue.Data
                 return (AllZooReviews.Count > 0) ? totalAverageRating / AllZooReviews.Count : 0;
             }
         }
+
         //public virtual List<Review> Reviews { get; set; } = new List<Review>();
         public virtual ICollection<Attraction> Attractions { get; set; } = new List<Attraction>();
         public virtual ICollection<Review> AllZooReviews { get; set; } = new List<Review>();
-        
-
     }
 }
