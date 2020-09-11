@@ -28,6 +28,7 @@ namespace ZooBlue.Services
             var attractionList = attractionEntities.Select(e => new AttractionListItems
             {
                 AttId = e.AttId,
+                ZooId = e.ZooId,
                 Animals = e.Animals,
                 Experiences = e.Experiences,
                 HasAquaticExhibit = e.HasAquaticExhibit,
