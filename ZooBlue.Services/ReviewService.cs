@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -11,9 +12,10 @@ using ZooBlue.Models.ReviewModels;
 namespace ZooBlue.Services
 {
     public class ReviewService
-
     {
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
         private readonly Guid _userId;
+        public ReviewService() { }
         public ReviewService(Guid userId)
         {
             _userId = userId;
@@ -58,32 +60,23 @@ namespace ZooBlue.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<Review> GetReviewById(int id)
+        public ReviewDetail GetReviewById(int id)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Reviews.ToList()
-                        .Where(e => e.ZooId == id)
-                        //.Single(e => e.ZooId == id);
-                        .Select(
-                            e =>
-
-                    new Review
-                    {
-                        ReviewId = e.ReviewId,
-                        Rating = e.Rating,
-                        ReviewText = e.ReviewText,
-                        VisitDate = e.VisitDate,
-                        //ZooId = entity.ZooId,
-                        //CreatedUtc = entity.CreatedUtc,
-                        //ModifiedUtc = entity.ModifiedUtc
-                    }
-                    );
-
-                return entity;
-            }
+            var entity = _context.Reviews.Find(id);
+            if (entity == null)
+                return null;
+                var detail = new ReviewDetail
+                {
+                    ReviewId = entity.ReviewId,
+                    Rating = entity.Rating,
+                    ReviewText = entity.ReviewText,
+                    VisitDate = entity.VisitDate,
+                    ZooId = entity.ZooId,
+                    //CreatedUtc = entity.CreatedUtc,
+                    //ModifiedUtc = entity.ModifiedUtc
+                };
+                return detail;
+           
         }
         public bool ReviewEdit(ReviewEdit model)
         {
