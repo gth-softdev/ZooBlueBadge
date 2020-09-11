@@ -11,7 +11,8 @@ namespace ZooBlue.Models
     {
         public int ReviewId { get; set; }
         public string ReviewText { get; set; }
-
+        public int Rating { get; set; }
+        public int ZooId { get; set; }
 
         [Display(Name = "Created")]
         public DateTime VisitDate { get; set; }
