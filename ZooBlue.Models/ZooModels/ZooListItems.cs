@@ -18,6 +18,5 @@ namespace ZooBlue.Models.ZooModels
         public double AverageRating { get; set; }
         public AttractionDetail AttractionDetails { get; set; }
         public List<ReviewDetail> AllZooReviews { get; set; } //Needs to call model at somepoint
-        
     }
 }
