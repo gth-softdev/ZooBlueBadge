@@ -69,6 +69,7 @@ namespace ZooBlue.Services
                             AverageRating = e.AverageRating,
                             //AttractionsDetails = attractionDetail.AttId,
                             AllZooReviews = e.AllZooReviews.ToList()
+
                         });
                 return zooQuery.ToArray();
             }
