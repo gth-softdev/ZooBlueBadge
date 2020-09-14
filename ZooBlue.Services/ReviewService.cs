@@ -35,7 +35,6 @@ namespace ZooBlue.Services
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                //entity.Author = ctx.Users.Where(e => e.Id == _userId).First();
                 ctx.Reviews.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
