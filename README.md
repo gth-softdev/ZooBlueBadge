@@ -67,7 +67,7 @@ Currently looking for any Software Web Dev job opportunities and experience: [Dr
 
 * **Gary Holman**
 Currently progressing through the [Eleven Fifty Academy]( https://elevenfifty.org/) Software Development program as well, Gary is an incredible member of any team. No matter what arises in the code or team dynamic, he can stead the ship. His knowledge of C# is always expanding as no challenge is too much for his work ethic and determination.<br/>
-Currently looking for any Software Web Dev job opportunities and experience: [Gary Holman](TBD)
+Currently looking for any Software Web Dev job opportunities and experience: [Gary Holman](https://www.linkedin.com/in/gary-holman-soft-dev/)
 
 * **Kate Lockhart**
 A recent [Eleven Fifty Academy]( https://elevenfifty.org/) front end web development graduate, continuing her education with their software development program. She plays hard and works harder to always get the job done. She thrives in a solo or team dynamic, but enjoys the power in working together to create a well coded program.<br/>
