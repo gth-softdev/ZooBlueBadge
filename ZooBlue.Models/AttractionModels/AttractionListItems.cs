@@ -12,7 +12,6 @@ namespace ZooBlue.Models.AttractionModels
         [Display(Name = "Attraction Id")]
         public int AttId { get; set; }
 
-        [Display(Name = "Zoo")]
         public int ZooId { get; set; }
 
         public string Animals { get; set; }

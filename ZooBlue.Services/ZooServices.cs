@@ -47,13 +47,6 @@ namespace ZooBlue.Services
             {
                 AttractionDetail attractionDetail = new AttractionDetail();
 
-
-                //GetAttractionById();
-                //{
-                //    if (attractionDetail.ZooId == ZooListItems.ZooId)
-                //        return attractionDetail; 
-                //}
-
                 var zooQuery =
                     ctx
                         .Zoos.ToList()
@@ -68,8 +61,6 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
-                            //AttractionsDetails = attractionDetail.AttId,
-                            //AllZooReviews = e.AllZooReviews.ToList()
                         });
                 return zooQuery.ToArray();
             }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooBlue.Models", "ZooBlue.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooBlue.Services", "ZooBlue.Services\ZooBlue.Services.csproj", "{EF792B5A-4883-4454-8B82-B90E9DDC6C26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooBlueConsole", "ZooBlueConsole\ZooBlueConsole.csproj", "{F8FDEDCF-3CAA-487D-A2AF-69F2DF176EBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EF792B5A-4883-4454-8B82-B90E9DDC6C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF792B5A-4883-4454-8B82-B90E9DDC6C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF792B5A-4883-4454-8B82-B90E9DDC6C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8FDEDCF-3CAA-487D-A2AF-69F2DF176EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8FDEDCF-3CAA-487D-A2AF-69F2DF176EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8FDEDCF-3CAA-487D-A2AF-69F2DF176EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8FDEDCF-3CAA-487D-A2AF-69F2DF176EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -91,7 +91,6 @@ namespace ZooBlue.Services
                 HasGarden = entity.HasGarden,
                 SeasonalAttractions = entity.SeasonalAttractions,
                 ZooId = entity.ZooId,
-                ZooName = entity.Zoo.ZooName
             };
             return detail;
         }
