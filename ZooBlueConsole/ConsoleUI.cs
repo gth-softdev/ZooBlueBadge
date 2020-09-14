@@ -85,6 +85,7 @@ namespace ZooBlueConsole
                         ViewAllZoos();
                         break;
                     case "2":
+                        ViewZooById();
                         break;
                     case "3":
                         break;
@@ -122,7 +123,6 @@ namespace ZooBlueConsole
                 readTask.Wait();
                 var zoos = readTask.Result;
 
-
                 foreach (var zoo in zoos)
                 {
                     Console.WriteLine($"Zoo ID: {zoo.ZooId}\n" +
@@ -133,7 +133,6 @@ namespace ZooBlueConsole
                         $"AZA Accredited: {zoo.AZAAccredited}\n" +
                         $"Average Rating: {zoo.AverageRating}\n");
                 }
-
             }
             Console.ReadKey();
         }
@@ -161,7 +160,6 @@ namespace ZooBlueConsole
                 }
             }
         }
-
         public void CreateNewZoo()
         {
             Dictionary<string, string> newZoo = new Dictionary<string, string>();
