@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -159,6 +160,41 @@ namespace ZooBlueConsole
                         $"{zoo.AllZooReviews}");
                 }
             }
+        }
+
+        public void CreateNewZoo()
+        {
+            Dictionary<string, string> newZoo = new Dictionary<string, string>();
+            //Console.Write("Zoo ID: ");
+            //string zooId = Console.ReadLine(); // Need to figure out how to make it automatically use the key  method for ZooId
+            //newZoo.Add("ZooId", zooId);
+
+            Console.Write("Name: ");
+            string zooName = Console.ReadLine();
+            newZoo.Add("Name", zooName);
+
+            Console.Write("Size: ");
+            string zooSize = Console.ReadLine();
+            newZoo.Add("Size", zooSize);
+
+            Console.Write("Location: ");
+            string zooLocation = Console.ReadLine();
+            newZoo.Add("Location", zooLocation);
+
+            Console.Write("Admission: ");
+            string zooAdmission = Console.ReadLine();
+            newZoo.Add("Admission", zooAdmission);
+
+            Console.Write("AZA Accredited: ");
+            string zooAZA = Console.ReadLine();
+            newZoo.Add("AZA Accredited", zooAZA);
+
+            HttpContent newZooHTTP = new FormUrlEncodedContent(newZoo);
+
+            var response = _client.PostAsync("https://localhost:44322/api/Zoo/", newZooHTTP);
+            if (response.Result.IsSuccessStatusCode) { Console.WriteLine("Zoo Successfully Create"); }
+            else { Console.WriteLine("Failed to create Zoo."); }
+            Console.ReadKey();
         }
         public void AttractionMenu()
         {
