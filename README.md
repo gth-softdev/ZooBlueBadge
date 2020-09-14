@@ -57,7 +57,7 @@ Pull requests are always welcome. For major changes to the API, please open an i
 Wiki repository being developed for more detailed documentation.
 
 ## License
-[MIT](MIT License.md)
+[MIT](https://github.com/gth-softdev/ZooBlueBadge/blob/kate/MIT%20License.md)
 
 ## Authors of the Zoo API
 
