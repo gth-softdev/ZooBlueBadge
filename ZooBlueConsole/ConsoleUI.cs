@@ -41,19 +41,15 @@ namespace ZooBlueConsole
         {
             Console.Clear();
             Console.WriteLine(
-                "/n" +
-                "/n" +
-                "/n" +
-                "Zoological API/n" +
-                "/n" +
-                "The API full of information on zoos around the country." +
-                "/n" +
-                "/n" +
-                "/n" +
-                "1. Create an Account/n" +
-                "2. Login to Your Account/n" +
-                "3. Exit Application/n" +
-                "/n");
+                "\n\n\n" +
+                "Zoological API\n" +
+                "\n" +
+                "The API full of information on zoos around the country.\n" +
+                "\n\n\n" +
+                "1. Create an Account\n\n" +
+                "2. Login to Your Account\n\n" +
+                "3. Exit Application\n\n" +
+                "\n");
 
             Console.Write("Enter menu number: ");
 
@@ -67,6 +63,7 @@ namespace ZooBlueConsole
                     break;
                 case "3":
                     Console.WriteLine("Goodbye");
+                    Console.ReadLine();
                     _keepRunning = false;
                     break;
                 default:
@@ -91,20 +88,20 @@ namespace ZooBlueConsole
             register.Add("Password", Console.ReadLine());
 
             Console.Write("Confirm your Password: ");
-            register.Add("Password", Console.ReadLine());
+            register.Add("ConfirmPassword", Console.ReadLine());
 
             var registerNewAcct = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44322/api/Account/Register");
             registerNewAcct.Content = new FormUrlEncodedContent(register.AsEnumerable());
             var response = _client.SendAsync(registerNewAcct);
 
             if (response.IsCompleted)
-                Console.WriteLine("/n" +
-                    "You have created an account!/n" +
-                    "Please return to the previous menu and login./n");
+                Console.WriteLine("\n" +
+                    "You have created an account!\n" +
+                    "Please return to the previous menu and login.\n");
             else
-                Console.WriteLine("/n" +
-                    "I'm sorry, something went wrong while created your account./n" +
-                    "Please try again./n");
+                Console.WriteLine("\n" +
+                    "I'm sorry, something went wrong while created your account.\n" +
+                    "Please try again.\n");
             return;
         }
 
@@ -123,7 +120,7 @@ namespace ZooBlueConsole
             login.Add("Password", Console.ReadLine());
 
             //HttpClient httpClient = new HttpClient();
-            var tokenRequest = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44331/token");
+            var tokenRequest = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44322/token");
             tokenRequest.Content = new FormUrlEncodedContent(login.AsEnumerable());
             var response = await _client.SendAsync(tokenRequest);
             var tokenString = await response.Content.ReadAsStringAsync();
