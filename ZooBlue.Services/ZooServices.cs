@@ -47,12 +47,6 @@ namespace ZooBlue.Services
             {
                 AttractionDetail attractionDetail = new AttractionDetail();
 
-                //GetAttractionById();
-                //{
-                //    if (attractionDetail.ZooId == ZooListItems.ZooId)
-                //        return attractionDetail; 
-                //}
-
                 var zooQuery =
                     ctx
                         .Zoos.ToList()
@@ -67,8 +61,6 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
-                            //AttractionsDetails = attractionDetail.AttId,
-                            AllZooReviews = e.AllZooReviews.ToList()
 
                         });
                 return zooQuery.ToArray();
@@ -79,6 +71,8 @@ namespace ZooBlue.Services
         public ZooListItems GetZooById(int id)
         {
             AttractionService attractionService = new AttractionService();
+            ReviewService reviewService = new ReviewService();
+            
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
@@ -89,9 +83,9 @@ namespace ZooBlue.Services
                 {
                     AttractionDetail attractionDetail = attractionService.GetAttractionById(attraction.AttId);
 
-
                     var detail = new ZooListItems
                     {
+                        ZooId = entity.ZooId,
                         ZooName = entity.ZooName,
                         Location = entity.Location,
                         ZooSize = entity.ZooSize,
@@ -99,9 +93,15 @@ namespace ZooBlue.Services
                         Admission = entity.Admission,
                         AverageRating = entity.AverageRating,
                         AttractionDetails = attractionDetail,
-                        AllZooReviews = entity.AllZooReviews.ToList()
+                        AllZooReviews = new List<ReviewDetail>() //entity.AllZooReviews.Select(e=>reviewService.GetReviewById(e.ReviewId)).ToList()
                     };
-                     return detail;
+                    foreach (Review review in entity.AllZooReviews)
+                    {
+                        ReviewDetail reviewDetail = reviewService.GetReviewById(review.ReviewId);
+                        detail.AllZooReviews.Add(reviewDetail);
+                    }
+                    return detail;
+
                 }
                 return null;
             }

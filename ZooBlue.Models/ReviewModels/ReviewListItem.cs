@@ -15,5 +15,6 @@ namespace ZooBlue.Models
 
         [Display(Name = "Created")]
         public DateTime VisitDate { get; set; }
+    
     }
 }
