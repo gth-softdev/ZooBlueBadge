@@ -36,7 +36,7 @@ namespace ZooBlue.Data
                     totalAverageRating += rating.Rating;
                 }
 
-                return (AllZooReviews.Count > 0) ? Math.Round(totalAverageRating / AllZooReviews.Count) : 0;
+                return (AllZooReviews.Count > 0) ? Math.Round(totalAverageRating / AllZooReviews.Count, 2) : 0;
             }
         }
 

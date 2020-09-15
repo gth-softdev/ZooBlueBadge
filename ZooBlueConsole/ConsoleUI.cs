@@ -108,7 +108,6 @@ namespace ZooBlueConsole
         public void ViewAllZoos()
         {
 
-
             _client.BaseAddress = new Uri("https://localhost:44322/api/Zoo/");
 
             var responseTask = _client.GetAsync("Zoo");
@@ -172,20 +171,20 @@ namespace ZooBlueConsole
             newZoo.Add("Name", zooName);
 
             Console.Write("Size: ");
-            string zooSize = Console.ReadLine();
-            newZoo.Add("Size", zooSize);
+            int zooSize = int.Parse(Console.ReadLine());
+            newZoo.Add("Size", zooSize.ToString());
 
             Console.Write("Location: ");
             string zooLocation = Console.ReadLine();
             newZoo.Add("Location", zooLocation);
 
             Console.Write("Admission: ");
-            string zooAdmission = Console.ReadLine();
-            newZoo.Add("Admission", zooAdmission);
+            double zooAdmission = double.Parse(Console.ReadLine());
+            newZoo.Add("Admission", zooAdmission.ToString());
 
             Console.Write("AZA Accredited: ");
-            string zooAZA = Console.ReadLine();
-            newZoo.Add("AZA Accredited", zooAZA);
+            bool zooAZA = bool.Parse(Console.ReadLine());
+            newZoo.Add("AZA Accredited", zooAZA.ToString());
 
             HttpContent newZooHTTP = new FormUrlEncodedContent(newZoo);
 
