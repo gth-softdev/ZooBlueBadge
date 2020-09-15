@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json.Bson;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,19 +18,146 @@ namespace ZooBlueConsole
 {
     public class ConsoleUI
     {
-        HttpClient _client = new HttpClient();
+        //forces the program to be running 
+        private bool _keepRunning = true;
+        //creates bool for being logged in/out, start as out to force login
+        private static bool _isLoggedIn = false;
+
+        //HttpClient field needed to carry the auth and hold changes to the client
+        private static readonly HttpClient _client = new HttpClient();
+
+        //dclaring token for use in auth
+        private static string _token;
+
         public void Run()
         {
+            while (!_isLoggedIn)
+                LoginMenu();
             MainMenu();
+        }
+
+        //A login menu to first run before MainMenu
+        private void LoginMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(
+                "/n" +
+                "/n" +
+                "/n" +
+                "Zoological API/n" +
+                "/n" +
+                "The API full of information on zoos around the country." +
+                "/n" +
+                "/n" +
+                "/n" +
+                "1. Create an Account/n" +
+                "2. Login to Your Account/n" +
+                "3. Exit Application/n" +
+                "/n");
+
+            Console.Write("Enter menu number: ");
+
+            switch(Console.ReadLine())
+            {
+                case "1":
+                    CreateAnAccount();
+                    break;
+                case "2":
+                    Login();
+                    break;
+                case "3":
+                    Console.WriteLine("Goodbye");
+                    _keepRunning = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void CreateAnAccount()
+        {
+            Console.Clear();
+            Console.WriteLine("To create an account we need some basic information./n" +
+                "Please enter your information below:" +
+                "/n");
+
+            Console.Write("Enter your Email: ");
+            Dictionary<string, string> register = new Dictionary<string, string>
+            {
+                {"Email", Console.ReadLine() }
+            };
+
+            Console.Write("Create a Password: ");
+            register.Add("Password", Console.ReadLine());
+
+            Console.Write("Confirm your Password: ");
+            register.Add("Password", Console.ReadLine());
+
+            var registerNewAcct = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44322/api/Account/Register");
+            registerNewAcct.Content = new FormUrlEncodedContent(register.AsEnumerable());
+            var response = _client.SendAsync(registerNewAcct);
+
+            if (response.IsCompleted)
+                Console.WriteLine("/n" +
+                    "You have created an account!/n" +
+                    "Please return to the previous menu and login./n");
+            else
+                Console.WriteLine("/n" +
+                    "I'm sorry, something went wrong while created your account./n" +
+                    "Please try again./n");
+            return;
+        }
+
+        private static async Task Login()
+        {
+            Console.Clear();
+            Dictionary<string, string> login = new Dictionary<string, string>
+            {
+                {"grant_type", "password" }
+            };
+
+            Console.Write("Email: ");
+            login.Add("Username", Console.ReadLine());
+
+            Console.Write("Password: ");
+            login.Add("Password", Console.ReadLine());
+
+            //HttpClient httpClient = new HttpClient();
+            var tokenRequest = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44331/token");
+            tokenRequest.Content = new FormUrlEncodedContent(login.AsEnumerable());
+            var response = await _client.SendAsync(tokenRequest);
+            var tokenString = await response.Content.ReadAsStringAsync();
+            var token = JsonConvert.DeserializeObject<Token>(tokenString).Value;
+            _token = token;
+            tokenRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("\n" +
+                    "Success, you are currrently logged in with a token.");
+                //If loggin is successful using token to authorize http client
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+                _isLoggedIn = true;
+            }
+            else
+                Console.WriteLine("\n" +
+                    "Login failed, please try again.");
+            return;
+        }
+
+        //Class needed to etablish a token for login in the ConsoleUI
+        public class Token
+        {
+            [JsonProperty("access_token")]
+            public string Value { get; set; }
         }
 
         public void MainMenu()
         {
-            bool keepRunning = true;
-            while (keepRunning)
+            while (_keepRunning)
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to the ZooBlue API Console Application! Select an option below for your desired ZooLogical information! \n\n" +
+                Console.WriteLine("Welcome to the Zoo API Console Application! Select an option below for your desired ZooLogical information! \n\n" +
                     "1. Zoo Information\n" +
                     "2. Attractions Information\n" +
                     "3. Reviews Information\n" +
@@ -53,7 +182,7 @@ namespace ZooBlueConsole
                         break;
                     case "5":
                         Console.WriteLine("Goodbye");
-                        keepRunning = false;
+                        _keepRunning = false;
                         break;
                     default:
                         break;
