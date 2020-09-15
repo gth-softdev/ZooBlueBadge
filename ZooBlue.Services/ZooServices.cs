@@ -61,6 +61,7 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
+
                         });
                 return zooQuery.ToArray();
             }
@@ -125,7 +126,7 @@ namespace ZooBlue.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
+         
         // DELETE
         public bool DeleteZoo(int zooId)
         {

@@ -3,7 +3,7 @@ namespace ZooBlue.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMigration : DbMigration
+    public partial class seeddata : DbMigration
     {
         public override void Up()
         {
@@ -43,7 +43,7 @@ namespace ZooBlue.Data.Migrations
                         ReviewId = c.Int(nullable: false, identity: true),
                         Rating = c.Int(nullable: false),
                         ReviewText = c.String(),
-                        VisitDate = c.DateTime(nullable: false),
+                        VisitDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         ZooId = c.Int(nullable: false),
                         Author = c.Guid(nullable: false),
                         IsRecommended = c.Boolean(nullable: false),
@@ -88,7 +88,7 @@ namespace ZooBlue.Data.Migrations
                         PhoneNumber = c.String(),
                         PhoneNumberConfirmed = c.Boolean(nullable: false),
                         TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEndDateUtc = c.DateTime(precision: 7, storeType: "datetime2"),
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(),
