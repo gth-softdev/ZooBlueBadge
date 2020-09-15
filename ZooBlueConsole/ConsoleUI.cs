@@ -28,7 +28,7 @@ namespace ZooBlueConsole
             while (keepRunning)
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to the ZooBlue API Console Application! Select an option below for your desired ZooLogical information! \n\n" +
+                Console.WriteLine("Welcome to the Zoo API Console Application! Select an option below for your desired ZooLogical information! \n\n" +
                     "1. Zoo Information\n" +
                     "2. Attractions Information\n" +
                     "3. Reviews Information\n" +
