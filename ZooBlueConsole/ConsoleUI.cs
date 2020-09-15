@@ -239,6 +239,7 @@ namespace ZooBlueConsole
         public void ViewAllZoos()
         {
 
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             _client.BaseAddress = new Uri("https://localhost:44322/api/Zoo/");
 
             var responseTask = _client.GetAsync("Zoo");
@@ -270,6 +271,7 @@ namespace ZooBlueConsole
         {
             Console.Write("Enter Zoo ID: ");
             int userInput = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var readTask = _client.GetAsync("https://localhost:44322/api/Zoo/");
             var response = readTask.Result;
             if (response.IsSuccessStatusCode)
@@ -318,7 +320,7 @@ namespace ZooBlueConsole
             newZoo.Add("AZA Accredited", zooAZA.ToString());
 
             HttpContent newZooHTTP = new FormUrlEncodedContent(newZoo);
-
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var response = _client.PostAsync("https://localhost:44322/api/Zoo/", newZooHTTP);
             if (response.Result.IsSuccessStatusCode) { Console.WriteLine("Zoo Successfully Create"); }
             else { Console.WriteLine("Failed to create Zoo."); }
@@ -330,6 +332,7 @@ namespace ZooBlueConsole
             Console.Clear();
             Console.Write("Enter the Zoo ID for the Zoo You'd like to update: ");
             int id = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var getTask = _client.GetAsync("https://localhost:44322/api/Zoo/");
             var response = getTask.Result;
             ZooListItems oldZoo = new ZooListItems();
@@ -389,6 +392,7 @@ namespace ZooBlueConsole
             Console.Clear();
             Console.Write("Enter Zoo ID of the Zoo you'd like to delete.");
             int id = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var deleteTask = _client.DeleteAsync("https://localhost:44322/api/Zoo/{id}");
             var response = deleteTask.Result;
             if (response.IsSuccessStatusCode)
@@ -444,7 +448,7 @@ namespace ZooBlueConsole
         }
         public void ViewAllAttractions()
         {
-
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             _client.BaseAddress = new Uri("https://localhost:44322/api/Attraction/");
 
             var responseTask = _client.GetAsync("Attraction");
@@ -476,6 +480,7 @@ namespace ZooBlueConsole
         {
             Console.Write("Enter Attraction ID: ");
             int userInput = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var readTask = _client.GetAsync("https://localhost:44322/api/Attraction/");
             var response = readTask.Result;
             if (response.IsSuccessStatusCode)
@@ -522,7 +527,7 @@ namespace ZooBlueConsole
             newAttraction.Add("Garden", garden.ToString());
 
             HttpContent newAttractionHTTP = new FormUrlEncodedContent(newAttraction);
-
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var response = _client.PostAsync("https://localhost:44322/api/Attraction/", newAttractionHTTP);
             if (response.Result.IsSuccessStatusCode) { Console.WriteLine("Attraction Successfully Create"); }
             else { Console.WriteLine("Failed to create Attraction."); }
@@ -534,6 +539,7 @@ namespace ZooBlueConsole
             Console.Clear();
             Console.Write("Enter the Zoo ID for the Zoo You'd like to update: ");
             int id = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var getTask = _client.GetAsync("https://localhost:44322/api/Attraction/");
             var response = getTask.Result;
             AttractionListItems oldAttraction = new AttractionListItems();
@@ -595,6 +601,7 @@ namespace ZooBlueConsole
             Console.Clear();
             Console.Write("Enter Attraction ID of the Attraction you'd like to delete.");
             int id = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var deleteTask = _client.DeleteAsync("https://localhost:44322/api/Attraction/{id}");
             var response = deleteTask.Result;
             if (response.IsSuccessStatusCode)
@@ -650,7 +657,7 @@ namespace ZooBlueConsole
         }
         public void ViewAllReviews()
         {
-
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             _client.BaseAddress = new Uri("https://localhost:44322/api/Review/");
 
             var responseTask = _client.GetAsync("Review");
@@ -680,6 +687,7 @@ namespace ZooBlueConsole
         {
             Console.Write("Enter Zoo ID: ");
             int userInput = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var readTask = _client.GetAsync("https://localhost:44322/api/Review/");
             var response = readTask.Result;
             if (response.IsSuccessStatusCode)
@@ -716,7 +724,7 @@ namespace ZooBlueConsole
             newReview.Add("Date of Visit", visitDate.ToString()) ;
 
             HttpContent newReviewHTTP = new FormUrlEncodedContent(newReview);
-
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var response = _client.PostAsync("https://localhost:44322/api/Review/", newReviewHTTP);
             if (response.Result.IsSuccessStatusCode) { Console.WriteLine("Review Successfully Create"); }
             else { Console.WriteLine("Failed to create Review."); }
@@ -728,6 +736,7 @@ namespace ZooBlueConsole
             Console.Clear();
             Console.Write("Enter the Review ID for the Review You'd like to update: ");
             int id = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var getTask = _client.GetAsync("https://localhost:44322/api/Review/");
             var response = getTask.Result;
             ReviewDetail oldReview = new ReviewDetail();
@@ -779,6 +788,7 @@ namespace ZooBlueConsole
             Console.Clear();
             Console.Write("Enter Review ID of the Review you'd like to delete.");
             int id = int.Parse(Console.ReadLine());
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
             var deleteTask = _client.DeleteAsync("https://localhost:44322/api/Review/{id}");
             var response = deleteTask.Result;
             if (response.IsSuccessStatusCode)
