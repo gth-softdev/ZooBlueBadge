@@ -150,9 +150,9 @@
   <ItemGroup>
     <Compile Include="Attraction.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202009101442513_FirstMigration.cs" />
-    <Compile Include="Migrations\202009101442513_FirstMigration.Designer.cs">
-      <DependentUpon>202009101442513_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202009151401596_seeddata.cs" />
+    <Compile Include="Migrations\202009151401596_seeddata.Designer.cs">
+      <DependentUpon>202009151401596_seeddata.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,8 +164,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009101442513_FirstMigration.resx">
-      <DependentUpon>202009101442513_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009151401596_seeddata.resx">
+      <DependentUpon>202009151401596_seeddata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

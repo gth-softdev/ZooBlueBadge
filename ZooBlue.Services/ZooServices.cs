@@ -61,6 +61,7 @@ namespace ZooBlue.Services
                             AZAAccredited = e.AZAAccredited,
                             Admission = e.Admission,
                             AverageRating = e.AverageRating,
+
                         });
                 return zooQuery.ToArray();
             }
