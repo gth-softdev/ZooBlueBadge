@@ -7,13 +7,13 @@ namespace ZooBlue.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class FirstMigration : IMigrationMetadata
+    public sealed partial class seeddata : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(seeddata));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009101442513_FirstMigration"; }
+            get { return "202009151401596_seeddata"; }
         }
         
         string IMigrationMetadata.Source
