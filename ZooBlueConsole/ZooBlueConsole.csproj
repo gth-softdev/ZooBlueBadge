@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EF792B5A-4883-4454-8B82-B90E9DDC6C26}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZooBlue.Services</RootNamespace>
-    <AssemblyName>ZooBlue.Services</AssemblyName>
+    <ProjectGuid>{F8FDEDCF-3CAA-487D-A2AF-69F2DF176EBE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ZooBlueConsole</RootNamespace>
+    <AssemblyName>ZooBlueConsole</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,21 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,10 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttractionService.cs" />
+    <Compile Include="ConsoleUI.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReviewService.cs" />
-    <Compile Include="ZooServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -65,12 +59,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZooBlue.Data\ZooBlue.Data.csproj">
-      <Project>{0AE3CD05-1C48-480A-93C2-97923A967362}</Project>
+      <Project>{0ae3cd05-1c48-480a-93c2-97923a967362}</Project>
       <Name>ZooBlue.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZooBlue.Models\ZooBlue.Models.csproj">
-      <Project>{A1CE38AA-0349-49F3-ADEE-47169AC07987}</Project>
+      <Project>{a1ce38aa-0349-49f3-adee-47169ac07987}</Project>
       <Name>ZooBlue.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZooBlue.Services\ZooBlue.Services.csproj">
+      <Project>{ef792b5a-4883-4454-8b82-b90e9ddc6c26}</Project>
+      <Name>ZooBlue.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZooBlueBadgeAPI\ZooBlueBadgeAPI.csproj">
+      <Project>{17224c1c-0695-46ec-be6b-aa7e9da8ec1c}</Project>
+      <Name>ZooBlueBadgeAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

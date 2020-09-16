@@ -206,8 +206,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttractionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ZooController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,6 +313,14 @@
     <ProjectReference Include="..\ZooBlue.Data\ZooBlue.Data.csproj">
       <Project>{0AE3CD05-1C48-480A-93C2-97923A967362}</Project>
       <Name>ZooBlue.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZooBlue.Models\ZooBlue.Models.csproj">
+      <Project>{A1CE38AA-0349-49F3-ADEE-47169AC07987}</Project>
+      <Name>ZooBlue.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZooBlue.Services\ZooBlue.Services.csproj">
+      <Project>{EF792B5A-4883-4454-8B82-B90E9DDC6C26}</Project>
+      <Name>ZooBlue.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
