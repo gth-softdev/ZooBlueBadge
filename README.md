@@ -80,14 +80,23 @@ Wiki repository being developed for more detailed documentation.
 ## Authors of the Zoo API
 
 * **Drew Graber** 
-Drew is a hardworking and encouraging team player, who is currently enrolled in [Eleven Fifty Academy’s](https://elevenfifty.org/) Software Development Program. He has a flexible and dynamic skill set in C# which makes him an incredible asset to any software project. He also takes the time to support his teammates and create a beneficially fun environment for ideas and code creativity.<br/>
-Currently looking for any Software Web Dev job opportunities and experience: [Drew Graber]( https://www.linkedin.com/in/drew-graber/)
+Drew is a hardworking and encouraging team player, who is currently enrolled in [Eleven Fifty Academy’s](https://elevenfifty.org/) Software Development Program. He has a flexible and dynamic skill set in C# which makes him an incredible asset to any software project. He also takes the time to support his teammates and create a beneficially fun environment for ideas and code creativity.
+
+  Currently looking for any Software Web Dev job opportunities and experience.
+
+  **LinkedIn:** [Drew Graber]( https://www.linkedin.com/in/drew-graber/)   **Portfolio:** [Drew Graber](https://dgraber27.github.io/Portfolio-Clone-2/)
 
 * **Gary Holman**
-Currently progressing through the [Eleven Fifty Academy]( https://elevenfifty.org/) Software Development program as well, Gary is an incredible member of any team. No matter what arises in the code or team dynamic, he can stead the ship. His knowledge of C# is always expanding as no challenge is too much for his work ethic and determination.<br/>
-Currently looking for any Software Web Dev job opportunities and experience: [Gary Holman](https://www.linkedin.com/in/gary-holman-soft-dev/)
+Currently progressing through the [Eleven Fifty Academy]( https://elevenfifty.org/) Software Development program as well, Gary is an incredible member of any team. No matter what arises in the code or team dynamic, he can stead the ship. His knowledge of C# is always expanding as no challenge is too much for his work ethic and determination.
+
+  Intrested in any Software Web Dev job opportunities and experience.
+
+  **LinkedIn:** [Gary Holman](https://www.linkedin.com/in/gary-holman-soft-dev/)   **Portfolio:** [Gary Holman](https://gth-softdev.github.io/Portfolio/)
 
 * **Kate Lockhart**
-A recent [Eleven Fifty Academy]( https://elevenfifty.org/) front end web development graduate, continuing her education with their software development program. She plays hard and works harder to always get the job done. She thrives in a solo or team dynamic, but enjoys the power in working together to create a well coded program.<br/>
-Currently looking for any Software or Front End Web Dev job opportunities and experience: [Kate Lockhart](https://www.linkedin.com/in/katelynlockhart/)
+A recent [Eleven Fifty Academy]( https://elevenfifty.org/) front end web development graduate, continuing her education with their software development program. She plays hard and works harder to always get the job done. She thrives in a solo or team dynamic, but enjoys the power in working together to create a well coded program.
+
+   On the search for any Software or Front End Web Dev job opportunities and experience. 
+
+   **LinkedIn:** [Kate Lockhart](https://www.linkedin.com/in/katelynlockhart/)   **Portfolio:** [Kate Lockhart](https://katelockhart.github.io/MyPortfolio/)
 
