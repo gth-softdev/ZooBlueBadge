@@ -46,7 +46,6 @@ namespace ZooBlue.Services
                 var query =
                     ctx
                         .Reviews
-                        //.Where(e => e.Author == _userId)
                         .Select(
                             e =>
                                 new ReviewListItem
@@ -71,8 +70,6 @@ namespace ZooBlue.Services
                     ReviewText = entity.ReviewText,
                     VisitDate = entity.VisitDate,
                     ZooId = entity.ZooId,
-                    //CreatedUtc = entity.CreatedUtc,
-                    //ModifiedUtc = entity.ModifiedUtc
                 };
                 return detail;
            
@@ -98,7 +95,6 @@ namespace ZooBlue.Services
                 {
                     entity.IsRecommended = model.IsRecommended;
                 }
-                //entity.Content = model.Content;
 
                 if (ctx.ChangeTracker.HasChanges())
                 {

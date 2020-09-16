@@ -24,7 +24,6 @@ namespace ZooBlue.Models
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
-        //public ApplicationUser Author { get; set; }
 
 
         public bool IsRecommended { get; set; }

@@ -38,26 +38,7 @@ namespace ZooBlue.Services
             ).ToList();
             return attractionList;
         }
-        //public IEnumerable<AttractionListItems> GetAttractionById(id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var attQuery =
-        //            ctx
-        //            .Attractions.ToList()
-        //            .Select(
-        //            e => new AttractionListItems
-        //            {
-        //                AttId = e.AttId,
-        //                Animals = e.Animals,
-        //                Experiences = e.Experiences,
-        //                HasAquaticExhibit = e.HasAquaticExhibit,
-        //                HasGarden = e.HasGarden,
-        //                SeasonalAttractions = e.SeasonalAttractions
-        //            });
-        //        return attQuery;
-        //    }
-        //}
+       
 
         public bool CreateAttraction(AttractionCreate model)
         {
