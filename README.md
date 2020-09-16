@@ -4,14 +4,19 @@ The Zoological API was created to house information about Zoos across the United
 
 This API is written in C#, an object-oriented programming language from Microsoft designed to work with their .Net platform. 
 
+
+
 ## Installation
 
 Feel free to clone and explore the application:
 Use the package manager [GitHub]( https://github.com/gth-softdev/ZooBlueBadge/) to install the Zoo API. Follow instructions on their page for various ways to clone this project or simply use your command prompt/terminal to navigate to the folder you wish to house the program and enter the line below.
+
 Use Git or checkout with SVN using the web URL:
 ```bash
 $ git clone https://github.com/gth-softdev/ZooBlueBadge.git
 ```
+
+
 
 ## Usage Directions
 
@@ -23,10 +28,17 @@ By clicking the API button in the top left of the navbar, the ASP.NET Web API He
 
 After this we utilize an API client for creating and reading the HTTP/s requests and responses. Our team enjoys the platform [Postman]( https://www.postman.com/) offers for API navigation and testing.
 
-Explore the API at your whimsy!  
+Utilize the base API address: https://localhost:44322 along with the endpoints listed below.
+
+Explore the API at your whimsy!
+
+**Note:** A console application is currently in the works and included in the solution. Please excuse the mess, finished Console TBD.
+
 
 
 ## Zoo API Database Endpoints
+
+**Base Address:** https://localhost:44322
 
 **Zoo** 
 1) /api/Zoo -- 'POST' -- Create a "Zoo", the basic zoo information
@@ -52,12 +64,18 @@ Explore the API at your whimsy!
 14) /api/Review -- 'PUT' -- Update a review's data
 15) /api/Review/{id} -- 'DELETE' -- Delete a review by ReviewId
 
+
+
 ## Contributing
 Pull requests are always welcome. For major changes to the API, please open an issue beforehand to discuss the changes you intend to make or feel the API needs.
 Wiki repository being developed for more detailed documentation.
 
+
+
 ## License
 [MIT](https://github.com/gth-softdev/ZooBlueBadge/blob/kate/MIT%20License.md)
+
+
 
 ## Authors of the Zoo API
 
