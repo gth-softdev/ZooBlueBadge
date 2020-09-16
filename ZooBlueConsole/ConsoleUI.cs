@@ -44,7 +44,7 @@ namespace ZooBlueConsole
                 "\n\n\n" +
                 "Zoological API\n" +
                 "\n" +
-                "The API full of information on zoos around the country.\n" +
+                "The API full of information on zoos from around the United States.\n" +
                 "\n\n\n" +
                 "1. Create an Account\n\n" +
                 "2. Login to Your Account\n\n" +
@@ -100,8 +100,9 @@ namespace ZooBlueConsole
                     "Please return to the previous menu and login.\n");
             else
                 Console.WriteLine("\n" +
-                    "I'm sorry, something went wrong while created your account.\n" +
+                    "I'm sorry, something went wrong while creating your account.\n" +
                     "Please try again.\n");
+            Console.ReadLine();
             return;
         }
 
@@ -139,6 +140,7 @@ namespace ZooBlueConsole
             else
                 Console.WriteLine("\n" +
                     "Login failed, please try again.");
+            Console.ReadLine();
             return;
         }
 
