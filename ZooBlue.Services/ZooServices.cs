@@ -112,9 +112,16 @@ namespace ZooBlue.Services
                     ZooSize = entity.ZooSize,
                     AZAAccredited = entity.AZAAccredited,
                     Admission = entity.Admission,
-                    AverageRating = entity.AverageRating
+                    AverageRating = entity.AverageRating,
+                    AllZooReviews = new List<ReviewDetail>()
                 };
+                foreach (Review review in entity.AllZooReviews)
+                {
+                    ReviewDetail reviewDetail = reviewService.GetReviewById(review.ReviewId);
+                    zooDetail.AllZooReviews.Add(reviewDetail);
+                }
                 return zooDetail;
+                
             }
         }
 
