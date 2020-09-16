@@ -13,6 +13,7 @@ using ZooBlue.Data;
 using ZooBlue.Models;
 using ZooBlue.Models.AttractionModels;
 using ZooBlue.Models.ZooModels;
+using ZooBlueBadgeAPI.Models;
 
 namespace ZooBlueConsole
 {
@@ -29,15 +30,15 @@ namespace ZooBlueConsole
         //dclaring token for use in auth
         private static string _token;
 
-        public void Run()
+        public async void Run()
         {
             while (!_isLoggedIn)
-                LoginMenu();
+              await LoginMenu();
             MainMenu();
         }
 
         //A login menu to first run before MainMenu
-        private void LoginMenu()
+        private async Task LoginMenu()
         {
             Console.Clear();
             Console.WriteLine(
@@ -56,10 +57,15 @@ namespace ZooBlueConsole
             switch(Console.ReadLine())
             {
                 case "1":
-                    CreateAnAccount();
+                   Task register = CreateAnAccount();
+                    register.Wait();
+                    await register;
                     break;
                 case "2":
-                    Login();
+                   Task login = Login();
+                    Console.WriteLine("\nprocessing\n");
+                    login.Wait();
+                    await login;
                     break;
                 case "3":
                     Console.WriteLine("Goodbye");
@@ -71,7 +77,7 @@ namespace ZooBlueConsole
             }
         }
 
-        private void CreateAnAccount()
+        private static async Task CreateAnAccount()
         {
             Console.Clear();
             Console.WriteLine("To create an account we need some basic information.\n" +
@@ -92,9 +98,9 @@ namespace ZooBlueConsole
 
             var registerNewAcct = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44322/api/Account/Register");
             registerNewAcct.Content = new FormUrlEncodedContent(register.AsEnumerable());
-            var response = _client.SendAsync(registerNewAcct);
+            var response = await _client.SendAsync(registerNewAcct);
 
-            if (response.IsCompleted)
+            if (response.IsSuccessStatusCode)
                 Console.WriteLine("\n" +
                     "You have created an account!\n" +
                     "Please return to the previous menu and login.\n");
@@ -104,6 +110,7 @@ namespace ZooBlueConsole
                     "Please try again.\n");
             Console.ReadLine();
             return;
+          
         }
 
         private static async Task Login()
@@ -247,7 +254,7 @@ namespace ZooBlueConsole
             var responseTask = _client.GetAsync("Zoo");
             responseTask.Wait();
             var result = responseTask.Result;
-            //Task<HttpResponseMessage> getTask = client.GetAsync("https://localhost:44322/api/Zoo/");
+            //Task<HttpResponseMessage> getTask = client.GetAsync("https://localhost:44322/api/");
             //HttpResponseMessage result = getTask.Result;
             if (result.IsSuccessStatusCode)
             {
@@ -292,6 +299,7 @@ namespace ZooBlueConsole
                         $"{zoo.AttractionDetails}\n" +
                         $"{zoo.AllZooReviews}");
                 }
+                Console.ReadLine();
             }
         }
         public void CreateNewZoo()
@@ -451,7 +459,7 @@ namespace ZooBlueConsole
         public void ViewAllAttractions()
         {
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-            _client.BaseAddress = new Uri("https://localhost:44322/api/Attraction/");
+            _client.BaseAddress = new Uri("https://localhost:44322/api/");
 
             var responseTask = _client.GetAsync("Attraction");
             responseTask.Wait();
@@ -475,6 +483,7 @@ namespace ZooBlueConsole
                         $"Aquarium: {attraction.HasAquaticExhibit}\n" +
                         $"Garden: {attraction.HasGarden}\n");
                 }
+                    Console.ReadLine();
             }
             Console.ReadKey();
         }
@@ -499,6 +508,7 @@ namespace ZooBlueConsole
                         $"Aquarium: {attraction.HasAquaticExhibit}\n" +
                         $"Garden: {attraction.HasGarden}\n");
                 }
+                Console.ReadLine();
             }
         }
         public void CreateNewAttraction()
@@ -704,6 +714,7 @@ namespace ZooBlueConsole
                         $"Review Text: {review.ReviewText}\n" +
                         $"VisitDate: {review.VisitDate}\n");
                 }
+                Console.ReadLine();
             }
         }
         public void CreateNewReview()
