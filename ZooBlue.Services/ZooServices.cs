@@ -64,7 +64,7 @@ namespace ZooBlue.Services
 
                         });
                 return zooQuery.ToArray();
-            }
+            } 
         }
 
         // GET BY ID - READ
@@ -95,15 +95,26 @@ namespace ZooBlue.Services
                         AttractionDetails = attractionDetail,
                         AllZooReviews = new List<ReviewDetail>() //entity.AllZooReviews.Select(e=>reviewService.GetReviewById(e.ReviewId)).ToList()
                     };
-                    foreach (Review review in entity.AllZooReviews)
-                    {
-                        ReviewDetail reviewDetail = reviewService.GetReviewById(review.ReviewId);
-                        detail.AllZooReviews.Add(reviewDetail);
-                    }
-                    return detail;
+                        foreach (Review review in entity.AllZooReviews)
+                        {
+                            ReviewDetail reviewDetail = reviewService.GetReviewById(review.ReviewId);
+                            detail.AllZooReviews.Add(reviewDetail);
+                        }
+                        return detail;
 
                 }
-                return null;
+
+                var zooDetail = new ZooListItems
+                {
+                    ZooId = entity.ZooId,
+                    ZooName = entity.ZooName,
+                    Location = entity.Location,
+                    ZooSize = entity.ZooSize,
+                    AZAAccredited = entity.AZAAccredited,
+                    Admission = entity.Admission,
+                    AverageRating = entity.AverageRating
+                };
+                return zooDetail;
             }
         }
 
