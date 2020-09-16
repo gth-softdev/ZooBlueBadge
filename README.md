@@ -42,8 +42,8 @@ Explore the API at your whimsy!
 
 **Zoo** 
 1) /api/Zoo -- 'POST' -- Create a "Zoo", the basic zoo information
-2) /api/Zoo -- 'GET' -- Returns all zoos and their corresponding data
-3) /api/Zoo/{id} -- 'GET' -- Returns a singular zoo and its data
+2) /api/Zoo -- 'GET' -- Returns all zoos and their corresponding data, does not include attached attraction and review data
+3) /api/Zoo/{id} -- 'GET' -- Returns a singular zoo and its data, includes attached attraction and review data
 4) /api/Zoo -- 'PUT' -- Updates a zoo's information
 5) /api/Zoo/{id} -- 'DELETE' -- Deletes the zoo specified by the ZooId
 
@@ -89,7 +89,7 @@ Drew is a hardworking and encouraging team player, who is currently enrolled in 
 * **Gary Holman**
 Currently progressing through the [Eleven Fifty Academy]( https://elevenfifty.org/) Software Development program as well, Gary is an incredible member of any team. No matter what arises in the code or team dynamic, he can stead the ship. His knowledge of C# is always expanding as no challenge is too much for his work ethic and determination.
 
-  Intrested in any Software Web Dev job opportunities and experience.
+  Interested in any Software Web Dev job opportunities and experience.
 
   **LinkedIn:** [Gary Holman](https://www.linkedin.com/in/gary-holman-soft-dev/)   **Portfolio:** [Gary Holman](https://gth-softdev.github.io/Portfolio/)
 
