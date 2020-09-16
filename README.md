@@ -84,7 +84,7 @@ Drew is a hardworking and encouraging team player, who is currently enrolled in 
 
   Currently looking for any Software Web Dev job opportunities and experience.
 
-  **LinkedIn:** [Drew Graber]( https://www.linkedin.com/in/drew-graber/)   **Portfolio:** [Drew Graber](https://dgraber27.github.io/Portfolio-Clone-2/)
+  **LinkedIn:** [Drew Graber]( https://www.linkedin.com/in/drew-graber/)   **Portfolio:** [Drew Graber](https://dgraber27.github.io/Portfolio/)
 
 * **Gary Holman**
 Currently progressing through the [Eleven Fifty Academy]( https://elevenfifty.org/) Software Development program as well, Gary is an incredible member of any team. No matter what arises in the code or team dynamic, he can stead the ship. His knowledge of C# is always expanding as no challenge is too much for his work ethic and determination.
