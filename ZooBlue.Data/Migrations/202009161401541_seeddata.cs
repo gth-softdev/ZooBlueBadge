@@ -45,7 +45,6 @@ namespace ZooBlue.Data.Migrations
                         ReviewText = c.String(),
                         VisitDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         ZooId = c.Int(nullable: false),
-                        Author = c.Guid(nullable: false),
                         IsRecommended = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ReviewId)

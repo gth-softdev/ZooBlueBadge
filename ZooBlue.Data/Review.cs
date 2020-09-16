@@ -16,17 +16,14 @@ namespace ZooBlue.Data
         public string ReviewText { get; set; }
         public DateTime VisitDate { get; set; }
 
-        // get from user table?   public string FullName { get; set; }
 
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
-        public Guid Author { get; set; }
 
 
         public bool IsRecommended { get; set; }
 
-        // userid from app user? public int MyProperty { get; set; }
 
 
     }

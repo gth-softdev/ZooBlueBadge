@@ -22,7 +22,6 @@ namespace ZooBlue.Models.ReviewModels
         [ForeignKey(nameof(Zoo))]
         public int ZooId { get; set; }
         public virtual Zoo Zoo { get; set; }
-        //public ApplicationUser Author { get; set; }
 
 
     }

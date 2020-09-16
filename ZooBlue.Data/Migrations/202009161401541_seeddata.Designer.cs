@@ -13,7 +13,7 @@ namespace ZooBlue.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202009151401596_seeddata"; }
+            get { return "202009161401541_seeddata"; }
         }
         
         string IMigrationMetadata.Source

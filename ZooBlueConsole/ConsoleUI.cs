@@ -74,9 +74,9 @@ namespace ZooBlueConsole
         private void CreateAnAccount()
         {
             Console.Clear();
-            Console.WriteLine("To create an account we need some basic information./n" +
+            Console.WriteLine("To create an account we need some basic information.\n" +
                 "Please enter your information below:" +
-                "/n");
+                "\n");
 
             Console.Write("Enter your Email: ");
             Dictionary<string, string> register = new Dictionary<string, string>
